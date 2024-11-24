@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Map"
+        android:icon="@drawable/baseline_airlines_24"/>
+    <item android:title="QRScan"
+        android:icon="@drawable/baseline_airplanemode_active_24"/>
+    <item android:title="Places"
+        android:icon="@drawable/baseline_airplane_ticket_24"/>
+</menu>
