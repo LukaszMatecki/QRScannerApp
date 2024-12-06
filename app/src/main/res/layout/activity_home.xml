@@ -4,11 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".HomeActivity">
+    tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="409dp"
+        android:layout_height="648dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/BottomNavBar"
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="1dp"
@@ -23,5 +37,7 @@
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_navmenu"
         />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

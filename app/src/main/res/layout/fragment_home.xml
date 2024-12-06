@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ScannerFragment">
+    tools:context=".HomeFragment">
 
     <FrameLayout
         android:id="@+id/fragmentContainer"
@@ -19,12 +19,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/centeredText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Moduł skanera"
-            android:layout_gravity="center"/>
-    </FrameLayout>
+            android:text="Moduł home"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center" />
 
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
