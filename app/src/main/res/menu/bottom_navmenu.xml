@@ -4,20 +4,20 @@
     <item
         android:id="@+id/main"
         android:title="Główna"
-        android:icon="@drawable/baseline_airplane_ticket_24"
+        android:icon="@drawable/home"
         app:showAsAction="always"/>
 
 
     <item
         android:id="@+id/scan"
         android:title="Skaner"
-        android:icon="@drawable/baseline_airlines_24"
+        android:icon="@drawable/scan"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/map"
         android:title="Mapa"
-        android:icon="@drawable/baseline_airplanemode_active_24"
+        android:icon="@drawable/map"
         app:showAsAction="always"/>
 
 </menu>

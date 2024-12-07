@@ -6,27 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".MapFragment">
 
+    <!-- FrameLayout to container for the map fragment -->
     <FrameLayout
         android:id="@+id/fragmentContainer"
-        android:layout_width="409dp"
-        android:layout_height="648dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/centeredText"
+        <Button
+            android:id="@+id/showmap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Moduł map"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_gravity="center" />
-
+            android:text="Pokaz mape"
+            android:layout_gravity="center"/>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
