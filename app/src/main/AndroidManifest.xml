@@ -2,7 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera"/>
+
     <application
+        android:hardwareAccelerated="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QRScanner"
+
         tools:targetApi="31">
 
         <!--
@@ -29,6 +34,10 @@
             android:value="AIzaSyCpWOb97xfwjk_oUl3xE6U40M-3ZD5T4gk" />
 
         <activity
+            android:name=".HomeFragment"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
             android:name=".MapsActivity"
             android:exported="false"
             android:label="@string/title_activity_maps" />
@@ -42,7 +51,18 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".ScannerFragment" />
+
+
+        <activity android:name=".ScannerFragment"
+                  android:screenOrientation="fullSensor"
+                  tools:replace="screenOrientation"/>
+
+        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation"
+            tools:ignore="DiscouragedApi" />
+
         <activity android:name=".MapFragment" />
     </application>
 
