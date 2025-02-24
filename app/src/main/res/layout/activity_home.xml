@@ -52,20 +52,30 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            app:menu="@menu/bottom_navmenu"
+            app:elevation="10dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:menu="@menu/bottom_navmenu"
+            app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
+            app:itemRippleColor="@color/white_transparent"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- NavigationView -->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="275dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/white"
+        app:itemIconPadding="30dp"
+        app:itemVerticalPadding="12dp"
         app:headerLayout="@layout/nav_header"
-        app:menu="@menu/left_navmenu" />
+        app:menu="@menu/left_navmenu"
+        app:itemBackground="@drawable/nav_item_background"
+        app:elevation="6dp"
+        app:itemRippleColor="@color/white_transparent"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

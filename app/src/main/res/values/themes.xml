@@ -5,15 +5,21 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
         <item name="colorPrimary">#1C34F8</item>
-        <item name="colorPrimaryVariant">#E0E0E0</item>
+        <item name="colorPrimaryVariant">#FFFFFF</item>
         <item name="colorOnPrimary">#000000</item>
         <item name="colorAccent">#FF5722</item>
         <item name="colorButtonNormal">#43a5be</item>
+
     </style>
 
-    <style name="navigation_font" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/lato_regular</item>
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/selector_grey</item>
+        <item name="android:layout_height">2dp</item> <!-- Wysokość prostokąta -->
+        <item name="android:layout_width">match_parent</item> <!-- Szerokość prostokąta -->
+        <item name="android:layout_marginHorizontal">24dp</item>
+        <item name="android:layout_marginBottom">4dp</item> <!-- Odstęp od dolnej krawędzi -->
     </style>
+
 
     <style name="Theme.QRScanner" parent="Base.Theme.QRScanner" />
 </resources>

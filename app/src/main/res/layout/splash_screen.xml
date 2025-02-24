@@ -4,33 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:background="@drawable/main_background_gradient"
     android:layout_height="match_parent"
     tools:context=".SplashScreen">
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="211dp"
-        android:layout_height="84dp"
-        android:text="QrScanner, wciśnij przycisk aby zacząć"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato_black"
+        android:text="QrScanner app"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/continue_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dalej"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:layout_constraintVertical_bias="0.62"
-        android:backgroundTint="#D3D3D3"
-        android:textColor="#000000"
-        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

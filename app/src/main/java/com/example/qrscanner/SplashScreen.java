@@ -2,6 +2,7 @@ package com.example.qrscanner;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -12,25 +13,22 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class SplashScreen extends AppCompatActivity {
 
-    Button continueButton;
+    public static int SPLASH_TIMER = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.splash_screen);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
-
-        continueButton = findViewById(R.id.continue_button);
-
-        continueButton.setOnClickListener(view -> {
-            Intent intent = new Intent(SplashScreen.this, MainActivity.class);
-            startActivity(intent);
-        });
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent;
+                intent = new Intent(SplashScreen.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        }, SPLASH_TIMER);
+    }
 }
-}
+

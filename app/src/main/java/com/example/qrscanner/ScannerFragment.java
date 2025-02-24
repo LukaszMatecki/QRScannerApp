@@ -14,25 +14,23 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.ScanOptions;
 
 public class ScannerFragment extends Fragment {
 
+
+    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_scan, container, false);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (getActivity() != null) {
+            initiateQRScanner();
+        }
+
+        returnToHomeFragment();
+        return null;
     }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        initiateQRScanner();
-    }
-
     private void initiateQRScanner() {
         IntentIntegrator intentIntegrator = IntentIntegrator.forSupportFragment(ScannerFragment.this);
 
