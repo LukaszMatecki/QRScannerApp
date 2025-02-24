@@ -7,29 +7,63 @@
     android:fitsSystemWindows="true"
     tools:context=".HomeFragment">
 
+    <View
+        android:id="@+id/rectangle"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/main_background_gradient"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+
     <FrameLayout
         android:id="@+id/fragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lista"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="75dp"
             android:layout_marginLeft="20dp"
-            android:visibility="gone"/>
+            android:layout_marginTop="75dp"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/textglowna"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Strona glowna" />
+            android:text="Strona główna"
+            android:fontFamily="@font/lato_bold"/>
 
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Witaj!"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:textSize="44sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/lato_black"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="60dp"
+            android:text="Naciśnij dowolny widżet"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/lato_light"/>
 
     </FrameLayout>
 

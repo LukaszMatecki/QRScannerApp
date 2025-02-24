@@ -3,31 +3,46 @@ package com.example.qrscanner;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class MapFragment extends Fragment {
 
-    Button showmap;
-
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Zwracamy widok fragmentu
-        View view = inflater.inflate(R.layout.fragment_map, container, false);
-
-        // Inicjalizujemy przycisk
-        showmap = view.findViewById(R.id.showmap);
-
-        // Ustawiamy listener na kliknięcie
-        showmap.setOnClickListener(v -> {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        if (getActivity() != null) {
             Intent intent = new Intent(getActivity(), MapsActivity.class);
             startActivity(intent);
-        });
+        }
 
-        return view;
+        returnToHomeFragment();
+        return null;
+    }
+
+
+    private void returnToHomeFragment() {
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, new HomeFragment()) // Wstawienie HomeFragment
+                .addToBackStack(null)
+                .commit();
+
+        // Zmiana "wciśnięcia po kliknięciu powrotu"
+        BottomNavigationView bottomNavigation = requireActivity().findViewById(R.id.bottomNavigationView);
+        bottomNavigation.setSelectedItemId(R.id.main);
+
+        NavigationView navigationView = requireActivity().findViewById(R.id.nav_view);
+        Menu menu = navigationView.getMenu();
+        MenuItem item = menu.findItem(R.id.boczna_strona_gl);
     }
 }

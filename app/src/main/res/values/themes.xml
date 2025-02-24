@@ -11,5 +11,9 @@
         <item name="colorButtonNormal">#43a5be</item>
     </style>
 
+    <style name="navigation_font" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/lato_regular</item>
+    </style>
+
     <style name="Theme.QRScanner" parent="Base.Theme.QRScanner" />
 </resources>
