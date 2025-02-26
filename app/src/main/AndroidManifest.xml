@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-feature android:name="android.hardware.camera"/>
 
     <application
@@ -23,7 +24,7 @@
 
              To get one, follow the directions here:
 
-                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+             https://developers.google.com/maps/documentation/android-sdk/get-api-key
 
              Once you have your API key (it starts with "AIza"), define a new property in your
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
@@ -64,6 +65,8 @@
             tools:ignore="DiscouragedApi" />
 
         <activity android:name=".MapFragment" />
+
+        <activity android:name=".PlaceDetails"/>
     </application>
 
 </manifest>

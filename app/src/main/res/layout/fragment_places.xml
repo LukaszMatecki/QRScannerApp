@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".PlacesFragment">
 
     <View
         android:id="@+id/rectangle"
@@ -74,7 +74,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/example" />
+                        android:src="@drawable/piotrkowska" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -90,7 +90,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/example" />
+                        android:src="@drawable/ogrod_b" />
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
@@ -114,7 +114,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/example" />
+                        android:src="@drawable/dworzec_fabryczna" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -130,7 +130,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/example" />
+                        android:src="@drawable/manufaktura" />
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
@@ -150,11 +150,11 @@
                     app:cardElevation="6dp">
 
                     <ImageView
-                        android:id="@+id/miejsce_image"
+                        android:id="@+id/pasaz_r_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/example" />
+                        android:src="@drawable/pasaz_r" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -166,11 +166,11 @@
                     app:cardElevation="6dp">
 
                     <ImageView
-                        android:id="@+id/miejsce2_image"
+                        android:id="@+id/orientarium_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/example" />
+                        android:src="@drawable/orientarium" />
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
@@ -190,11 +190,11 @@
                     app:cardElevation="6dp">
 
                     <ImageView
-                        android:id="@+id/miejsce3_image"
+                        android:id="@+id/palmiarnia_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/example" />
+                        android:src="@drawable/palmiarnia" />
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -206,11 +206,11 @@
                     app:cardElevation="6dp">
 
                     <ImageView
-                        android:id="@+id/miejsce4_image"
+                        android:id="@+id/plac_wolnosci_image"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/example" />
+                        android:src="@drawable/plac_wolnosci" />
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>

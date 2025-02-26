@@ -12,6 +12,7 @@ googleMaps = "19.0.0"
 constraintlayout = "2.2.0"
 playServicesMaps = "19.0.0"
 androidx-viewbinding = "8.7.3"
+firebaseFirestore = "25.1.2"
 
 [libraries]
 
@@ -27,6 +28,7 @@ google-maps = { group = "com.google.android.gms", name = "play-services-maps", v
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
 viewbinding = { group = "androidx.databinding", name = "viewbinding", version.ref = "androidx-viewbinding" }
+firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 
 
 [plugins]
