@@ -61,9 +61,16 @@ dependencies {
     implementation("androidx.camera:camera-camera2:1.2.1")
     implementation("androidx.camera:camera-lifecycle:1.2.1")
     implementation("androidx.camera:camera-view:1.2.1")
+
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+
     implementation("com.google.android.material:material:1.12.0")
+
     implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
     implementation("com.google.firebase:firebase-analytics")
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+    implementation("com.google.android.gms:play-services-maps:19.1.0")
+    implementation("com.google.android.gms:play-services-location:21.3.0")
 }

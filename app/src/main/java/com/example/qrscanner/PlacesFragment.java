@@ -24,15 +24,23 @@ public class PlacesFragment extends Fragment {
 
         // Znajdowanie kafelków
         ImageView piotrkowska = view.findViewById(R.id.piotrkowska_image);
-        ImageView manufaktura = view.findViewById(R.id.manufaktura_image);
         ImageView ogrod = view.findViewById(R.id.ogrod_b_image);
         ImageView dworzec = view.findViewById(R.id.dworzec_image);
+        ImageView manufaktura = view.findViewById(R.id.manufaktura_image);
+        ImageView pasaz = view.findViewById(R.id.pasaz_r_image);
+        ImageView orientarium = view.findViewById(R.id.orientarium_image);
+        ImageView palmiarnia = view.findViewById(R.id.palmiarnia_image);
+        ImageView plac = view.findViewById(R.id.plac_wolnosci_image);
 
         // Ustawienie kliknięć
         piotrkowska.setOnClickListener(v -> openDescriptionFragment("1"));
-        manufaktura.setOnClickListener(v -> openDescriptionFragment("2"));
-        ogrod.setOnClickListener(v -> openDescriptionFragment("3"));
-        dworzec.setOnClickListener(v -> openDescriptionFragment("4"));
+        ogrod.setOnClickListener(v -> openDescriptionFragment("2"));
+        dworzec.setOnClickListener(v -> openDescriptionFragment("3"));
+        manufaktura.setOnClickListener(v -> openDescriptionFragment("4"));
+        pasaz.setOnClickListener(v -> openDescriptionFragment("5"));
+        orientarium.setOnClickListener(v -> openDescriptionFragment("6"));
+        palmiarnia.setOnClickListener(v -> openDescriptionFragment("7"));
+        plac.setOnClickListener(v -> openDescriptionFragment("8"));
     }
 
     private void openDescriptionFragment(String placeId) {
