@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MapsActivity">
-
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/search"
@@ -18,11 +16,23 @@
         android:background="@drawable/search_view_background"
         android:clickable="true"
         android:elevation="10dp"
-        map:layout_constraintBottom_toBottomOf="parent"
-        map:layout_constraintEnd_toEndOf="parent"
-        map:layout_constraintHorizontal_bias="0.842"
-        map:layout_constraintStart_toStartOf="parent"
         map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- ListView do wyświetlania wyników wyszukiwania -->
+
+    <fragment
+        android:id="@+id/autocomplete_fragment"
+        android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        map:layout_constraintBottom_toBottomOf="@+id/map"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.0"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/search"
         map:layout_constraintVertical_bias="0.0" />
 
     <fragment
@@ -31,10 +41,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         map:layout_constraintBottom_toBottomOf="parent"
-        map:layout_constraintEnd_toEndOf="parent"
         map:layout_constraintStart_toStartOf="parent"
-        map:layout_constraintTop_toTopOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
         tools:ignore="FragmentTagUsage" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
