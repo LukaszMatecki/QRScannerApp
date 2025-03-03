@@ -15,25 +15,31 @@
 
     <TextView
         android:id="@+id/header_title"
-        android:layout_width="332dp"
-        android:layout_height="97dp"
-        android:layout_margin="20dp"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
         android:fontFamily="@font/lato_black"
+        android:gravity="left"
         android:text="Miejsca do zwiedzania w Łodzi"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/rectangle" />
+        app:layout_constraintTop_toTopOf="@id/rectangle"
+        app:layout_constraintVertical_bias="0.19999999" />
 
-    <!-- Pasek przycisków showBig, showSmall i Filter -->
+    <!-- Pasek przycisków -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/button_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/button_bar"
         app:layout_constraintBottom_toTopOf="@+id/recycler_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -42,32 +48,35 @@
         <!-- ShowBig -->
         <ImageView
             android:id="@+id/showBig"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_account_balance_24" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/lista" />
 
-        <!-- ShowSmall (obok ShowBig) -->
+        <!-- ShowSmall -->
         <ImageView
             android:id="@+id/showSmall"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/showBig"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_account_balance_24" />
+            app:srcCompat="@drawable/kafelki" />
 
-        <!-- Filter (wyrównany do prawej) -->
+        <!-- Filter -->
         <ImageView
             android:id="@+id/Filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/baseline_account_balance_24" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/filtruj" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
