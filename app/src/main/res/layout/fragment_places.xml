@@ -15,8 +15,8 @@
 
     <TextView
         android:id="@+id/header_title"
-        android:layout_width="352dp"
-        android:layout_height="88dp"
+        android:layout_width="332dp"
+        android:layout_height="97dp"
         android:layout_margin="20dp"
         android:fontFamily="@font/lato_black"
         android:text="Miejsca do zwiedzania w Łodzi"
@@ -28,15 +28,57 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/rectangle" />
 
+    <!-- Pasek przycisków showBig, showSmall i Filter -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/button_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/recycler_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rectangle">
 
+        <!-- ShowBig -->
+        <ImageView
+            android:id="@+id/showBig"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_account_balance_24" />
+
+        <!-- ShowSmall (obok ShowBig) -->
+        <ImageView
+            android:id="@+id/showSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintStart_toEndOf="@id/showBig"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_account_balance_24" />
+
+        <!-- Filter (wyrównany do prawej) -->
+        <ImageView
+            android:id="@+id/Filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/baseline_account_balance_24" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toBottomOf="@id/rectangle"
+        android:layout_marginTop="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/place_card"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_bar"
+        tools:listitem="@layout/place_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

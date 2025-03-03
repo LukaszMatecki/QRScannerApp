@@ -18,11 +18,12 @@
         android:id="@+id/place_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:gravity="center"
         android:fontFamily="@font/lato_black"
         android:text="Nazwa miejsca"
         android:textColor="@color/white"
-        android:textSize="44sp"
+        android:textSize="38sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,39 +49,84 @@
                 android:orientation="horizontal"
                 android:padding="10dp">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/place_card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="6dp">
+                <ImageView
+                    android:id="@+id/place_image"
+                    android:layout_width="300dp"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/piotrkowska" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="10dp">
+                <!-- Układ ikon po prawej stronie -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintWidth_percent="0.4"
+                    android:gravity="center"
+                    android:layout_weight="1">
 
-                        <ImageView
-                            android:id="@+id/place_image"
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/piotrkowska" />
+                    <ImageView
+                        android:id="@+id/icon1"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:srcCompat="@drawable/baseline_account_balance_24" />
 
-                        <TextView
-                            android:id="@+id/place_description"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Opis miejsca"
-                            android:textSize="16sp"
-                            android:paddingTop="8dp" />
-                    </LinearLayout>
+                    <ImageView
+                        android:id="@+id/icon2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:srcCompat="@drawable/baseline_account_balance_24" />
 
-                </androidx.cardview.widget.CardView>
+                    <ImageView
+                        android:id="@+id/icon3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:srcCompat="@drawable/baseline_account_balance_24" />
+
+                    <ImageView
+                        android:id="@+id/icon4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:srcCompat="@drawable/baseline_account_balance_24" />
+
+                    <ImageView
+                        android:id="@+id/icon5"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_marginBottom="10dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:srcCompat="@drawable/baseline_account_balance_24" />
+
+
+                </LinearLayout>
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/place_description"
+                android:layout_width="369dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/lato_regular"
+                android:paddingTop="8dp"
+                android:text="Opis miejsca"
+                android:textSize="16sp" />
 
         </LinearLayout>
 

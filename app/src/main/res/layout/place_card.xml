@@ -24,7 +24,7 @@
             android:layout_width="373dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/lato_regular"
+            android:fontFamily="@font/lato_bold"
             android:gravity="center"
             android:textSize="20sp"
             android:textStyle="bold" />

@@ -1,7 +1,7 @@
 package com.example.qrscanner;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,15 +37,20 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
         Place place = placesList.get(position);
 
         holder.name.setText(place.getNazwa());
-
-
         String imageUrl = place.getZdjecie();
 
         Glide.with(context)
                 .load(imageUrl)
-                .placeholder(R.drawable.manufaktura) // Obrazek tymczasowy, gdy zdjęcie się ładuje
-                .error(R.drawable.piotrkowska) // Obrazek, gdy nie uda się załadować zdjęcia
+                .placeholder(R.drawable.manufaktura) // Tymczasowy obrazek
+                .error(R.drawable.piotrkowska) // W razie błędu
                 .into(holder.image);
+
+        // Obsługa kliknięcia w kafelek
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, PlaceDetails.class);
+            intent.putExtra("PLACE_ID", place.getId()); // Przekazanie ID miejsca
+            context.startActivity(intent);
+        });
     }
 
     @Override
