@@ -7,23 +7,23 @@
         android:checkableBehavior="single">
         <item
             android:id="@+id/boczna_strona_gl"
-            android:icon="@drawable/home"
+            android:icon="@drawable/home_icon"
             android:title="Strona główna"/>
         <item
             android:id="@+id/boczny_skaner"
-            android:icon="@drawable/scan"
+            android:icon="@drawable/scan_icon"
             android:title="Skaner"/>
         <item
             android:id="@+id/boczny_mapa"
-            android:icon="@drawable/map"
+            android:icon="@drawable/map_icon"
             android:title="Mapa"/>
         <item
             android:id="@+id/boczny_miejsca"
-            android:icon="@drawable/places"
+            android:icon="@drawable/places_icon"
             android:title="Miejsca"/>
         <item
             android:id="@+id/boczny_ustawienia"
-            android:icon="@drawable/settings"
+            android:icon="@drawable/settings_icon"
             android:title="Ustawienia"/>
         <item
             android:id="@+id/boczny_informacje"

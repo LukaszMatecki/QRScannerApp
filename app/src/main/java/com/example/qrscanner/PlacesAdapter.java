@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.target.Target;
 
 import java.util.List;
 
@@ -19,16 +21,24 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
 
     private Context context;
     private List<Place> placesList;
+    private boolean isGridView; // Przełączanie widoku kafelków
 
-    public PlacesAdapter(Context context, List<Place> placesList) {
+    public PlacesAdapter(Context context, List<Place> placesList, boolean isGridView) {
         this.context = context;
         this.placesList = placesList;
+        this.isGridView = isGridView;
+    }
+
+    public void setGridView(boolean isGridView) {
+        this.isGridView = isGridView;
+        notifyDataSetChanged(); // Odśwież adapter po zmianie widoku
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.place_card, parent, false);
+        int layoutId = isGridView ? R.layout.place_card : R.layout.place_card2;
+        View view = LayoutInflater.from(context).inflate(layoutId, parent, false);
         return new ViewHolder(view);
     }
 
@@ -39,10 +49,16 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
         holder.name.setText(place.getNazwa());
         String imageUrl = place.getZdjecie();
 
+        // Resetowanie ImageView przed załadowaniem nowego obrazu
+        holder.image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        holder.image.setImageDrawable(null);
+
         Glide.with(context)
                 .load(imageUrl)
-                .placeholder(R.drawable.manufaktura) // Tymczasowy obrazek
-                .error(R.drawable.piotrkowska) // W razie błędu
+                .diskCacheStrategy(DiskCacheStrategy.ALL) // Zapobiega pobieraniu niższej jakości obrazu
+                .override(Target.SIZE_ORIGINAL) // Ładuje pełnowymiarowy obraz
+                .placeholder(R.drawable.manufaktura)
+                .error(R.drawable.piotrkowska)
                 .into(holder.image);
 
         // Obsługa kliknięcia w kafelek
@@ -54,7 +70,8 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return placesList.size();
     }
 

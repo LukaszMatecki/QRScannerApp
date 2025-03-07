@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.firestore.CollectionReference;
@@ -27,15 +29,23 @@ public class PlacesFragment extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference placesRef = db.collection("places");
 
+    private boolean isGridView = false; // Domyślnie lista
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_places, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        adapter = new PlacesAdapter(getContext(), placesList);
+        adapter = new PlacesAdapter(getContext(), placesList, isGridView);
         recyclerView.setAdapter(adapter);
+
+        setRecyclerViewLayout(); // Ustawienie domyślnego widoku
+
+        ImageView showBig = view.findViewById(R.id.showBig);
+        ImageView showSmall = view.findViewById(R.id.showSmall);
+
+        showBig.setOnClickListener(v -> switchToListView());
+        showSmall.setOnClickListener(v -> switchToGridView());
 
         fetchPlaces();
 
@@ -53,7 +63,7 @@ public class PlacesFragment extends Fragment {
                     return;
                 }
 
-                if (value == null) return; // Obsługa null
+                if (value == null) return;
 
                 placesList.clear();
                 for (QueryDocumentSnapshot doc : value) {
@@ -67,5 +77,24 @@ public class PlacesFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private void switchToListView() {
+        isGridView = false;
+        setRecyclerViewLayout();
+    }
+
+    private void switchToGridView() {
+        isGridView = true;
+        setRecyclerViewLayout();
+    }
+
+    private void setRecyclerViewLayout() {
+        if (isGridView) {
+            recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2)); // 2 kolumny dla widoku kafelkowego
+        } else {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        }
+        adapter.setGridView(isGridView); // Zmieniamy układ w adapterze
     }
 }

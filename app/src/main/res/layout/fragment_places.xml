@@ -31,7 +31,6 @@
         app:layout_constraintTop_toTopOf="@id/rectangle"
         app:layout_constraintVertical_bias="0.19999999" />
 
-    <!-- Pasek przycisków -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/button_bar"
         android:layout_width="match_parent"
@@ -45,7 +44,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rectangle">
 
-        <!-- ShowBig -->
         <ImageView
             android:id="@+id/showBig"
             android:layout_width="25dp"
@@ -54,9 +52,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/lista" />
+            app:srcCompat="@drawable/list_icon" />
 
-        <!-- ShowSmall -->
         <ImageView
             android:id="@+id/showSmall"
             android:layout_width="25dp"
@@ -65,9 +62,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/showBig"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/kafelki" />
+            app:srcCompat="@drawable/tile_icon" />
 
-        <!-- Filter -->
         <ImageView
             android:id="@+id/Filter"
             android:layout_width="25dp"
@@ -76,7 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/filtruj" />
+            app:srcCompat="@drawable/filter_icon" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

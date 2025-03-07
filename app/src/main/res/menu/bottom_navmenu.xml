@@ -4,7 +4,7 @@
     <item
         android:id="@+id/main"
         android:title="Główna"
-        android:icon="@drawable/home"
+        android:icon="@drawable/home_icon"
         app:showAsAction="always"
         />
 
@@ -12,14 +12,14 @@
     <item
         android:id="@+id/scan"
         android:title="Skaner"
-        android:icon="@drawable/scan"
+        android:icon="@drawable/scan_icon"
         app:showAsAction="always"
         />
 
     <item
         android:id="@+id/map"
         android:title="Mapa"
-        android:icon="@drawable/map"
+        android:icon="@drawable/map_icon"
         app:showAsAction="always"
         />
 
