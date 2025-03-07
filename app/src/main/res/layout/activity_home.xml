@@ -42,7 +42,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/light_grey"
+            android:background="@color/light_gray"
             app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

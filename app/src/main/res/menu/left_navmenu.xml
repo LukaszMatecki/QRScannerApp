@@ -25,9 +25,5 @@
             android:id="@+id/boczny_ustawienia"
             android:icon="@drawable/settings_icon"
             android:title="Ustawienia"/>
-        <item
-            android:id="@+id/boczny_informacje"
-            android:icon="@drawable/info"
-            android:title="O aplikacji"/>
     </group>
 </menu>

@@ -79,7 +79,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if (item.getItemId() == R.id.boczny_mapa) { selectedFragment = new MapFragment(); }
         else if (item.getItemId() == R.id.boczny_miejsca) { selectedFragment = new PlacesFragment(); }
         else if (item.getItemId() == R.id.boczny_ustawienia) { selectedFragment = new SettingsFragment(); }
-        else if (item.getItemId() == R.id.boczny_informacje) { selectedFragment = new AboutFragment(); }
 
         if (selectedFragment != null) {
             replaceFragment(selectedFragment);

@@ -13,7 +13,7 @@
     </style>
 
     <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
-        <item name="android:color">@color/selector_grey</item>
+        <item name="android:color">@color/selector_gray</item>
         <item name="android:layout_height">2dp</item> <!-- Wysokość prostokąta -->
         <item name="android:layout_width">match_parent</item> <!-- Szerokość prostokąta -->
         <item name="android:layout_marginHorizontal">24dp</item>

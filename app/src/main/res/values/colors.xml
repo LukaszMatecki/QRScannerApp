@@ -3,10 +3,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="white_transparent">#33FFFFFF</color>
-    <color name="grey">#AFAFAF</color>
-    <color name="light_grey">#25AFAFAF</color>
-    <color name="button_bar_grey">#70D3D3D3</color>
-    <color name="selector_grey">#7BAFAFAF</color>
+    <color name="gray">#AFAFAF</color>
+    <color name="light_gray">#25AFAFAF</color>
+    <color name="dark_gray">#505050</color>
+    <color name="button_bar_gray">#70D3D3D3</color>
+    <color name="selector_gray">#7BAFAFAF</color>
     <color name="blue_gradient1">#1C34F8</color>
 
 
