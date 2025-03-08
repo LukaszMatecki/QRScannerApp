@@ -64,7 +64,7 @@ public class PlaceDetails extends AppCompatActivity {
 
                         // Wczytanie obrazu lub ustawienie domyślnego
                         Glide.with(this)
-                                .load(imageUrl != null && !imageUrl.isEmpty() ? imageUrl : R.drawable.plac_wolnosci)
+                                .load(imageUrl != null && !imageUrl.isEmpty() ? imageUrl : R.drawable.loading_error)
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                                 .placeholder(R.drawable.loading) // Tymczasowy obraz
                                 .error(R.drawable.loading_error) // W razie błędu
