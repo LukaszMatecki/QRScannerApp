@@ -8,11 +8,10 @@
         app:showAsAction="always"
         />
 
-
     <item
         android:id="@+id/scan"
         android:title="Skaner"
-        android:icon="@drawable/scan_icon"
+        android:icon="@drawable/qrbig_icon"
         app:showAsAction="always"
         />
 

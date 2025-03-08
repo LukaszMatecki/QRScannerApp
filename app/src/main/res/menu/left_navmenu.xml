@@ -11,7 +11,7 @@
             android:title="Strona główna"/>
         <item
             android:id="@+id/boczny_skaner"
-            android:icon="@drawable/scan_icon"
+            android:icon="@drawable/qrbig_icon"
             android:title="Skaner"/>
         <item
             android:id="@+id/boczny_mapa"
