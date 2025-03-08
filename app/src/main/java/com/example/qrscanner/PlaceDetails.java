@@ -1,6 +1,7 @@
 package com.example.qrscanner;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,9 @@ public class PlaceDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_details);
+
+        View backContainer = findViewById(R.id.back_container);
+        backContainer.setOnClickListener(v -> onBackPressed());
 
         // Inicjalizacja Firebase Firestore
         db = FirebaseFirestore.getInstance();
@@ -62,8 +66,8 @@ public class PlaceDetails extends AppCompatActivity {
                         Glide.with(this)
                                 .load(imageUrl != null && !imageUrl.isEmpty() ? imageUrl : R.drawable.plac_wolnosci)
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .placeholder(R.drawable.plac_wolnosci) // Tymczasowy obraz
-                                .error(R.drawable.plac_wolnosci) // W razie błędu
+                                .placeholder(R.drawable.loading) // Tymczasowy obraz
+                                .error(R.drawable.loading_error) // W razie błędu
                                 .into(placeImage);
                     } else {
                         Toast.makeText(this, "Brak danych dla tego miejsca", Toast.LENGTH_SHORT).show();

@@ -37,7 +37,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        int layoutId = isGridView ? R.layout.place_card : R.layout.place_card2;
+        int layoutId = isGridView ? R.layout.place_card_small : R.layout.place_card_big;
         View view = LayoutInflater.from(context).inflate(layoutId, parent, false);
         return new ViewHolder(view);
     }
@@ -55,10 +55,10 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
 
         Glide.with(context)
                 .load(imageUrl)
-                .diskCacheStrategy(DiskCacheStrategy.ALL) // Zapobiega pobieraniu niższej jakości obrazu
-                .override(Target.SIZE_ORIGINAL) // Ładuje pełnowymiarowy obraz
-                .placeholder(R.drawable.manufaktura)
-                .error(R.drawable.piotrkowska)
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE)
+                .override(Target.SIZE_ORIGINAL)
+                .placeholder(R.drawable.loading)
+                .error(R.drawable.loading_error)
                 .into(holder.image);
 
         // Obsługa kliknięcia w kafelek

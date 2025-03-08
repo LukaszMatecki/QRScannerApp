@@ -90,10 +90,15 @@ public class PlacesFragment extends Fragment {
     }
 
     private void setRecyclerViewLayout() {
-        if (isGridView) {
+        if (isGridView)
+        {
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2)); // 2 kolumny dla widoku kafelkowego
-        } else {
+            recyclerView.setAdapter(adapter);
+        }
+        else
+        {
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setAdapter(adapter);
         }
         adapter.setGridView(isGridView); // Zmieniamy układ w adapterze
     }
