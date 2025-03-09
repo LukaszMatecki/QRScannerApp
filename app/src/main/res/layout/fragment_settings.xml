@@ -33,7 +33,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/home_icon" />
+                    android:src="@drawable/language_icon" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -83,7 +83,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/home_icon" />
+                    android:src="@drawable/notifications_icon" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -134,7 +134,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/home_icon" />
+                    android:src="@drawable/link_icon" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -184,7 +184,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/home_icon"
+                    android:src="@drawable/brightness_icon"
                     android:layout_marginEnd="10dp"/>
 
                 <LinearLayout

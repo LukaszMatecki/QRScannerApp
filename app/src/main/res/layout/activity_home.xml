@@ -57,6 +57,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_navmenu"
+            app:itemTextAppearanceActive="@style/BottomNavigationViewTextStyle"
+            app:itemTextAppearanceInactive="@style/BottomNavigationViewTextStyle"
             app:itemActiveIndicatorStyle="@style/App.Custom.Indicator"
             app:itemRippleColor="@color/white_transparent"
             />
@@ -76,6 +78,7 @@
         app:menu="@menu/left_navmenu"
         app:itemBackground="@drawable/nav_item_background"
         app:elevation="6dp"
+        app:itemTextAppearance="@style/LatoFontStyle"
         app:itemRippleColor="@color/white_transparent"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>

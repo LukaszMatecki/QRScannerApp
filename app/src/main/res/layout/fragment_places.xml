@@ -11,15 +11,15 @@
     <View
         android:id="@+id/rectangle"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="120dp"
         android:background="@drawable/main_background_gradient"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Nagłówek -->
     <TextView
         android:id="@+id/header_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="325dp"
+        android:layout_height="88dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:fontFamily="@font/lato_black"
@@ -29,10 +29,10 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/rectangle"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/rectangle"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <!-- Pasek przycisków w CardView -->
     <androidx.cardview.widget.CardView
