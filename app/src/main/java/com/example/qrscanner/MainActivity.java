@@ -55,17 +55,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             Fragment selectedFragment = null;
 
-            if (item.getItemId() == R.id.main) {
+            if (item.getItemId() == R.id.main)
+            {
                 selectedFragment = new HomeFragment();
-            } else if (item.getItemId() == R.id.scan) {
+            }
+            else if (item.getItemId() == R.id.scan)
+            {
                 selectedFragment = new ScannerFragment();
-            } else if (item.getItemId() == R.id.map) {
+            }
+            else if (item.getItemId() == R.id.map)
+            {
                 selectedFragment = new MapFragment();
             }
-            if (selectedFragment != null) {
+            if (selectedFragment != null)
+            {
                 replaceFragment(selectedFragment);
             }
-
             return true;
         });
     }
@@ -80,7 +85,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if (item.getItemId() == R.id.boczny_miejsca) { selectedFragment = new PlacesFragment(); }
         else if (item.getItemId() == R.id.boczny_ustawienia) { selectedFragment = new SettingsFragment(); }
 
-        if (selectedFragment != null) {
+        if (selectedFragment != null)
+        {
             replaceFragment(selectedFragment);
         }
 

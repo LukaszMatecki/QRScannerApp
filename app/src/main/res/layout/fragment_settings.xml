@@ -24,8 +24,9 @@
 
             <!-- Wybór języka -->
             <LinearLayout
+                android:id="@+id/button_language"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
@@ -75,7 +76,7 @@
             <!-- Powiadomienia -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
@@ -126,7 +127,7 @@
             <!-- Otwieranie linków -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
@@ -177,7 +178,7 @@
             <!-- Druga opcja -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
@@ -204,7 +205,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dostosowuje jasność ekranu do warunków oświetleniowych."
+                        android:text="Automatycznie dostosowuje jasność ekranu."
                         android:fontFamily="@font/lato_regular"
                         android:textSize="14sp"
                         android:textColor="@color/dark_gray" />
@@ -229,8 +230,9 @@
 
             <!-- Trzecia opcja -->
             <LinearLayout
+                android:id="@+id/button_theme"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
@@ -257,7 +259,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Dostosowywanie motywu w zależności od preferencji użytkownika"
+                        android:text="Wybór motywu aplikacji."
                         android:fontFamily="@font/lato_regular"
                         android:textSize="14sp"
                         android:textColor="@color/dark_gray" />
@@ -279,8 +281,9 @@
 
             <!-- Czwarta opcja -->
             <LinearLayout
+                android:id="@+id/button_clear_data"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
@@ -322,8 +325,9 @@
 
             <!-- Piąta opcja -->
             <LinearLayout
+                android:id="@+id/button_about"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
