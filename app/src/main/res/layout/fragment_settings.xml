@@ -8,6 +8,13 @@
     android:background="@color/white"
     tools:context=".SettingsFragment">
 
+    <ScrollView
+        android:id="@+id/scrollView_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
     <!-- Kontener ustawień -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -362,4 +369,5 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+    </ScrollView>
 </LinearLayout>

@@ -23,10 +23,13 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
     private List<Place> placesList;
     private boolean isGridView; // Przełączanie widoku kafelków
 
-    public PlacesAdapter(Context context, List<Place> placesList, boolean isGridView) {
+    private final boolean isHomeFragment;
+
+    public PlacesAdapter(Context context, List<Place> placesList, boolean isGridView, boolean isHomeFragment) {
         this.context = context;
         this.placesList = placesList;
         this.isGridView = isGridView;
+        this.isHomeFragment = isHomeFragment;
     }
 
     public void setGridView(boolean isGridView) {
@@ -36,8 +39,14 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        int layoutId = isGridView ? R.layout.place_card_small : R.layout.place_card_big;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
+    {
+        int layoutId;
+        if (isHomeFragment) {
+            layoutId = R.layout.place_card_home; // <-- Użyj place_card_home w HomeFragment
+        } else {
+            layoutId = isGridView ? R.layout.place_card_small : R.layout.place_card_big;
+        }
         View view = LayoutInflater.from(context).inflate(layoutId, parent, false);
         return new ViewHolder(view);
     }

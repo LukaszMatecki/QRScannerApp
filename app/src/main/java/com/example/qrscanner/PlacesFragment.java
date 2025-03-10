@@ -30,13 +30,14 @@ public class PlacesFragment extends Fragment {
     private CollectionReference placesRef = db.collection("places");
 
     private boolean isGridView = false; // Domyślnie lista
+    private boolean isHomeFragment = false; // Domyślnie lista
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_places, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);
-        adapter = new PlacesAdapter(getContext(), placesList, isGridView);
+        adapter = new PlacesAdapter(getContext(), placesList, isGridView, isHomeFragment);
         recyclerView.setAdapter(adapter);
 
         setRecyclerViewLayout(); // Ustawienie domyślnego widoku
