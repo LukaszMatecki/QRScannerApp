@@ -36,11 +36,16 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginEnd="10dp"
-                    android:src="@drawable/language_icon" />
+
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginEnd="10dp"
+                        android:src="@drawable/polish_flag_icon"
+                        android:scaleType="centerCrop"/>
+
+
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -114,7 +119,7 @@
                 </LinearLayout>
 
                 <RadioButton
-                    android:id="@+id/language_ang_radiobutton"
+                    android:id="@+id/language_eng_radiobutton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
 
