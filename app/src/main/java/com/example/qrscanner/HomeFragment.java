@@ -1,47 +1,28 @@
 package com.example.qrscanner;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.activity.OnBackPressedCallback;
-import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.common.reflect.TypeToken;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.gson.Gson;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,30 +72,17 @@ public class HomeFragment extends Fragment
     }
 
     private void fetchPlaces() {
-        placesRef.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(QuerySnapshot value, FirebaseFirestoreException error) {
-                if (error != null) {
-                    if (getContext() != null) {
-                        Toast.makeText(getContext(), "Błąd pobierania danych!", Toast.LENGTH_SHORT).show();
-                    }
-                    return;
-                }
+        SharedPreferences prefs = requireContext().getSharedPreferences("AppPrefsHome", Context.MODE_PRIVATE);
+        String json = prefs.getString("selectedPlaces", "");
 
-                if (value == null) return;
+        if (!json.isEmpty()) {
+            Type listType = new TypeToken<List<Place>>() {}.getType();
+            List<Place> savedPlaces = new Gson().fromJson(json, listType);
 
-                placesList.clear();
-                for (QueryDocumentSnapshot doc : value) {
-                    try {
-                        Place place = doc.toObject(Place.class);
-                        placesList.add(place);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-                adapter.notifyDataSetChanged();
-            }
-        });
+            placesList.clear();
+            placesList.addAll(savedPlaces);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     private void setRecyclerViewLayout()

@@ -61,12 +61,12 @@
 
     <TextView
         android:id="@+id/place_title"
-        android:layout_width="match_parent"
+        android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
         android:fontFamily="@font/lato_black"
         android:gravity="center"
         android:text="Nazwa miejsca"
@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/rectangle"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.716" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/button_bar"
@@ -105,6 +105,7 @@
                 android:background="@drawable/button_circle_background"
                 android:clickable="true"
                 android:focusable="true"
+                android:tooltipText="Dodaj do ulubionych"
                 app:srcCompat="@drawable/favourite" />
 
             <ImageView
@@ -115,6 +116,7 @@
                 android:background="@drawable/button_circle_background"
                 android:clickable="true"
                 android:focusable="true"
+                android:tooltipText="Oznacz jako zwiedzone"
                 app:srcCompat="@drawable/checkpositive_icon" />
 
             <ImageView
@@ -125,6 +127,7 @@
                 android:background="@drawable/button_circle_background"
                 android:clickable="true"
                 android:focusable="true"
+                android:tooltipText="Pokaż na mapie"
                 app:srcCompat="@drawable/localization_icon" />
 
             <ImageView
@@ -135,6 +138,7 @@
                 android:background="@drawable/button_circle_background"
                 android:clickable="true"
                 android:focusable="true"
+                android:tooltipText="Wyznacz trasę"
                 app:srcCompat="@drawable/way_icon" />
 
             <ImageView
@@ -145,6 +149,7 @@
                 android:background="@drawable/button_circle_background"
                 android:clickable="true"
                 android:focusable="true"
+                android:tooltipText="Pokaż kod QR"
                 app:srcCompat="@drawable/qrmini_icon" />
 
         </LinearLayout>

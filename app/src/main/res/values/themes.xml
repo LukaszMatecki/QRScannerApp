@@ -7,7 +7,7 @@
         <item name="colorPrimary">#1C34F8</item>
         <item name="colorPrimaryVariant">#FFFFFF</item>
         <item name="colorOnPrimary">#000000</item>
-        <item name="colorAccent">#FF5722</item>
+        <item name="colorAccent">#FFFFFF</item>
         <item name="colorButtonNormal">#43a5be</item>
 
     </style>

@@ -59,7 +59,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="16dp"
-                android:tooltipText="Lista"
+                android:tooltipText="Widok listy"
                 app:srcCompat="@drawable/list_icon" />
 
             <ImageView
@@ -67,7 +67,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="16dp"
-                android:tooltipText="Kafelki"
+                android:tooltipText="Widok kafelków"
                 app:srcCompat="@drawable/tile_icon" />
 
             <ImageView
@@ -75,7 +75,7 @@
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginStart="250dp"
-                android:tooltipText="Filtracja"
+                android:tooltipText="Filtruj"
                 app:srcCompat="@drawable/filter_icon" />
 
         </LinearLayout>
