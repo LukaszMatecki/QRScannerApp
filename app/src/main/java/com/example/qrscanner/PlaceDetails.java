@@ -1,6 +1,7 @@
 package com.example.qrscanner;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ public class PlaceDetails extends AppCompatActivity {
     private FirebaseFirestore db;
     private ImageView placeImage;
     private TextView placeTitle, placeDescription;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class PlaceDetails extends AppCompatActivity {
 
         // Pobranie ID miejsca przekazanego z intentu
         String placeId = getIntent().getStringExtra("PLACE_ID");
+        placeId = String.format("%03d", Integer.parseInt(placeId));
+
 
         if (placeId == null || placeId.trim().isEmpty()) {
             Toast.makeText(this, "Błąd: brak danych miejsca", Toast.LENGTH_SHORT).show();

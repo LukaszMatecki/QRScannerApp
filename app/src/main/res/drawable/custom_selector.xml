@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Kolor podświetlenia podczas przytrzymania -->
+    <item android:drawable="@color/filter_gray" android:state_pressed="true"/>
+
+    <!-- Kolor podświetlenia podczas focusa -->
+    <item android:drawable="@color/filter_gray" android:state_focused="true"/>
+
+    <!-- Domyślny kolor tła -->
+    <item android:drawable="@android:color/transparent"/>
+</selector>

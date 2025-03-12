@@ -56,22 +56,28 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Nagłówek -->
+
+    <!-- CardView dla ikon -->
+
     <TextView
         android:id="@+id/place_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/lato_black"
         android:gravity="center"
         android:text="Nazwa miejsca"
         android:textColor="@color/white"
-        android:textSize="34sp"
-        app:layout_constraintBottom_toBottomOf="@id/rectangle"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/rectangle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/rectangle"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rectangle"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <!-- CardView dla ikon -->
     <androidx.cardview.widget.CardView
         android:id="@+id/button_bar"
         android:layout_width="match_parent"
