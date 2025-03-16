@@ -1,7 +1,10 @@
 package com.example.qrscanner;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -15,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -64,6 +68,8 @@ public class PlacesFragment extends Fragment {
         fetchPlaces();
 
         return view;
+
+
     }
 
     private void fetchPlaces() {
@@ -101,21 +107,44 @@ public class PlacesFragment extends Fragment {
             }
 
             if (value == null) return;
-
             categoryList.clear();
+
+            if (!categoryList.contains("Ulubione")){categoryList.add("Ulubione");}
+            if (!categoryList.contains("Zwiedzone")){categoryList.add("Zwiedzone");}
+
             for (QueryDocumentSnapshot doc : value) {
                 String category = doc.getString("kategoria");
                 if (category != null && !categoryList.contains(category)) {
                     categoryList.add(category);
                 }
             }
+
+
         });
     }
     private void showFilterPopup(View anchorView) {
-        View popupView = getLayoutInflater().inflate(R.layout.custom_filter_popup, null);
+        Context context = getContext();
+        if (context == null) return;
+
+        // Tworzenie głównego layoutu popupu
+        LinearLayout popupLayout = new LinearLayout(context);
+        popupLayout.setOrientation(LinearLayout.VERTICAL);
+        popupLayout.setPadding(20, 20, 20, 20);
+
+        // Ustawienie zaokrąglonych rogów i ramki
+        GradientDrawable background = new GradientDrawable();
+        background.setColor(Color.WHITE);
+        background.setCornerRadius(30f); // Zaokrąglone rogi
+        popupLayout.setBackground(background);
+
+        Typeface customFont = ResourcesCompat.getFont(context, R.font.lato_regular);
+
+        // 🔹 Zmniejszenie szerokości popupu do 250dp
+        int popupWidth = (int) (200 * context.getResources().getDisplayMetrics().density);
+
         PopupWindow popupWindow = new PopupWindow(
-                popupView,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
+                popupLayout,
+                popupWidth,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
                 true
         );
@@ -123,53 +152,77 @@ public class PlacesFragment extends Fragment {
         popupWindow.setElevation(10f);
         popupWindow.setOutsideTouchable(true);
 
-        // Pobieramy kontenery i opcje
-        Typeface customFont = ResourcesCompat.getFont(getContext(), R.font.lato_regular);
-        TextView filterAll = popupView.findViewById(R.id.filter_all);
-        LinearLayout filterOptionsContainer = popupView.findViewById(R.id.filter_options_container);
-        int color = ResourcesCompat.getColor(getResources(), R.color.dark_gray, null);
-
-        // Obsługa "Wszystkie"
+        // 🔹 Opcja "Wszystkie"
+        TextView filterAll = new TextView(context);
+        filterAll.setText("Wszystkie");
+        filterAll.setTextSize(18);
+        filterAll.setTypeface(customFont);
+        filterAll.setTextColor(Color.BLACK);
+        filterAll.setPadding(20, 20, 20, 20);
+        filterAll.setGravity(Gravity.CENTER);
+        filterAll.setBackgroundResource(R.drawable.custom_selector);
         filterAll.setOnClickListener(v -> {
             filterPlacesByCategory("Wszystkie");
             popupWindow.dismiss();
         });
 
-        // Dodajemy kategorie dynamicznie
-        filterOptionsContainer.removeAllViews();
-        for (String category : categoryList) {
-            TextView categoryView = new TextView(getContext());
+        popupLayout.addView(filterAll);
+
+        //separator po "Wszystkie"
+        View separatorAll = new View(context);
+        separatorAll.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, 2));
+        separatorAll.setBackgroundColor(ContextCompat.getColor(context, R.color.filter_options_gray));
+        popupLayout.addView(separatorAll);
+
+        //generowanie kategorii dynamicznie
+        for (int i = 0; i < categoryList.size(); i++) {
+            String category = categoryList.get(i);
+
+            TextView categoryView = new TextView(context);
             categoryView.setText(category);
             categoryView.setTextSize(18);
             categoryView.setTypeface(customFont);
-            categoryView.setTextColor(getResources().getColor(android.R.color.black));
+            categoryView.setTextColor(Color.BLACK);
             categoryView.setPadding(20, 20, 20, 20);
             categoryView.setGravity(Gravity.CENTER);
             categoryView.setBackgroundResource(R.drawable.custom_selector);
-
-            // Separator
-            //View separator = new View(getContext());
-            //separator.setLayoutParams(new LinearLayout.LayoutParams(
-             //       ViewGroup.LayoutParams.MATCH_PARENT, 1));
-            //separator.setBackgroundColor(color);
-
-            // Obsługa kliknięcia
             categoryView.setOnClickListener(v -> {
                 filterPlacesByCategory(category);
                 popupWindow.dismiss();
             });
 
-            filterOptionsContainer.addView(categoryView);
-            //filterOptionsContainer.addView(separator);
+            popupLayout.addView(categoryView);
+
+            // 🔹 Separator po każdej kategorii oprócz ostatniej
+            if (i < categoryList.size() - 1) {
+                View separator = new View(context);
+                separator.setLayoutParams(new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, 2));
+                separator.setBackgroundColor(ContextCompat.getColor(context, R.color.filter_options_gray));
+                popupLayout.addView(separator);
+            }
         }
 
-        // Ustawienie pozycji pod przyciskiem
-        popupWindow.showAsDropDown(anchorView, -550, 30);
+        // Ustawienie pozycji popupu
+        popupWindow.showAsDropDown(anchorView, -500, 30);
     }
+
+
 
     private void filterPlacesByCategory(String category) {
         if (category.equals("Wszystkie")) {
             fetchPlaces();
+            return;
+        }
+
+        if (category.equals("Ulubione")) {
+            filterFavoriteOrVisited(category);
+            return;
+        }
+
+        if (category.equals("Zwiedzone")) {
+            filterFavoriteOrVisited(category);
             return;
         }
 
@@ -215,5 +268,38 @@ public class PlacesFragment extends Fragment {
             recyclerView.setAdapter(adapter);
         }
         adapter.setGridView(isGridView); // Zmieniamy układ w adapterze
+    }
+
+    private void filterFavoriteOrVisited(String category) {
+        if (getContext() == null) return; // Unikamy błędów kontekstowych
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+        boolean filterFavorites = category.equals("Ulubione");
+
+        placesRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
+            placesList.clear(); // Czyścimy listę dopiero po udanym pobraniu
+            boolean found = false;
+
+            for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                Place place = doc.toObject(Place.class);
+                String placeId = doc.getId();
+
+                boolean isFavorite = sharedPreferences.getBoolean("favorite_" + placeId, false);
+                boolean isVisited = sharedPreferences.getBoolean("visited_" + placeId, false);
+
+                if ((filterFavorites && isFavorite) || (!filterFavorites && isVisited)) {
+                    placesList.add(place);
+                    found = true;
+                }
+            }
+
+            if (!found) {
+                Toast.makeText(getContext(), "Brak miejsc w tej kategorii!", Toast.LENGTH_SHORT).show();
+            }
+
+            adapter.notifyDataSetChanged(); // Odświeżenie listy po przefiltrowaniu
+        }).addOnFailureListener(e -> {
+            Toast.makeText(getContext(), "Błąd filtrowania: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        });
     }
 }

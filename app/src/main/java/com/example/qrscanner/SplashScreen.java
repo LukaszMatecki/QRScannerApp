@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -77,11 +78,13 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private List<Place> getDailyRandomPlaces(List<Place> allPlaces) {
-        if (allPlaces.size() <= 4) return allPlaces; // Jeśli mniej niż 4, zwracamy wszystko
+        if (allPlaces.size() <= 4) return allPlaces;
 
         // Sprawdzamy datę ostatniej aktualizacji
         String lastUpdateDate = prefs.getString("lastUpdateDate", "");
-        String today = new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(new Date());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd", Locale.getDefault());
+        dateFormat.setTimeZone(TimeZone.getDefault());
+        String today = dateFormat.format(new Date());
 
         if (!lastUpdateDate.equals(today)) {
             Collections.shuffle(allPlaces);
