@@ -1,5 +1,6 @@
 package com.example.qrscanner;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ public class PlaceDetails extends AppCompatActivity {
 
     private boolean isFavorite, isVisited;
     private String placeId;
-    private ImageView iconFavorite, iconVisited;
+    private ImageView iconFavorite, iconVisited, iconWaypoint, iconRoute, iconQR;
     private SharedPreferences sharedPreferences;
 
     @Override
@@ -41,6 +42,9 @@ public class PlaceDetails extends AppCompatActivity {
         placeDescription = findViewById(R.id.place_description);
         iconFavorite = findViewById(R.id.icon1);
         iconVisited = findViewById(R.id.icon2);
+        iconWaypoint = findViewById(R.id.icon3);
+        iconRoute = findViewById(R.id.icon4);
+        iconQR = findViewById(R.id.icon5);
 
         placeId = getIntent().getStringExtra("PLACE_ID");
         placeId = String.format("%03d", Integer.parseInt(placeId));
@@ -61,6 +65,9 @@ public class PlaceDetails extends AppCompatActivity {
 
         iconFavorite.setOnClickListener(v -> toggleFavorite());
         iconVisited.setOnClickListener(v -> toggleVisited());
+        iconWaypoint.setOnClickListener(v -> showPlace(false)); // false = tylko pinezka
+        iconRoute.setOnClickListener(v -> showPlace(true)); // true = wyznacz trasę
+        iconQR.setOnClickListener(v -> showQR());
     }
 
     private void loadPlaceDetails(String placeId) {
@@ -109,9 +116,51 @@ public class PlaceDetails extends AppCompatActivity {
         Toast.makeText(this, isVisited ? "Oznaczono jako zwiedzone" : "Usunięto ze zwiedzonych", Toast.LENGTH_SHORT).show();
     }
 
+    private void showPlace(boolean isRoute) {
+        db.collection("places").document(placeId).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        Double place_lat = documentSnapshot.getDouble("wspolrzedned");
+                        Double place_lng = documentSnapshot.getDouble("wspolrzedneg");
+
+                        if (place_lat != null && place_lng != null) {
+                            Intent intent = new Intent(this, MapsActivity.class);
+                            intent.putExtra("place_lat", place_lat);
+                            intent.putExtra("place_lng", place_lng);
+                            intent.putExtra("is_route", isRoute); // Przekazujemy tryb działania
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(this, "Brak współrzędnych dla tego miejsca", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Błąd pobierania współrzędnych: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                );
+    }
+
+    private void showQR() {
+        db.collection("places").document(placeId).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (documentSnapshot.exists()) {
+                        String qrUrl = documentSnapshot.getString("kod");
+                        if (qrUrl != null && !qrUrl.isEmpty()) {
+                            QRDialogFragment qrDialog = new QRDialogFragment(qrUrl);
+                            qrDialog.show(getSupportFragmentManager(), "QRDialog");
+                        } else {
+                            Toast.makeText(this, "Brak kodu QR dla tego miejsca", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .addOnFailureListener(e ->
+                        Toast.makeText(this, "Błąd pobierania kodu QR: " + e.getMessage(), Toast.LENGTH_LONG).show()
+                );
+    }
+
+
     private void updateIcons() {
         iconFavorite.setImageResource(isFavorite ? R.drawable.favoritesolid_icon : R.drawable.favorite_icon);
-        iconVisited.setColorFilter(isVisited ? Color.GREEN : Color.BLACK);
+        iconVisited.setImageResource(isVisited ? R.drawable.checkpositivecolor_icon : R.drawable.checkpositive_icon);
     }
 
     private boolean getPreference(String key) {

@@ -75,4 +75,6 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.3.0")
 
     implementation("com.google.android.libraries.places:places:3.3.0")
+
+    implementation ("com.google.maps.android:android-maps-utils:2.2.3")
 }

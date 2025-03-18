@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="darker_white">#DEDEDE</color>
     <color name="white_transparent">#33FFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
     <color name="gray">#AFAFAF</color>
     <color name="light_gray">#25AFAFAF</color>
     <color name="dark_gray">#505050</color>
