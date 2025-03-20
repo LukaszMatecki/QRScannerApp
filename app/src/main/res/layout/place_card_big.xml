@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp">
+        >
 
         <ImageView
             android:id="@+id/place_image"
@@ -25,7 +25,8 @@
             android:id="@+id/place_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:fontFamily="@font/lato_bold"
             android:gravity="center"
             android:textSize="18sp"

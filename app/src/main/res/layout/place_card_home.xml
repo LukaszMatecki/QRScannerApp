@@ -1,38 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="90dp"
+    android:layout_width="300dp"
+    android:layout_height="400dp"
     android:layout_gravity="center"
     android:layout_margin="10dp"
     app:cardCornerRadius="16dp"
     app:cardElevation="6dp">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <!-- Zdjęcie, które wypełnia wysokość i jest przycinane -->
+        <!-- Zdjęcie w tle -->
         <ImageView
             android:id="@+id/place_image"
-            android:layout_width="150dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true" />
 
-        <!-- Tekst, który jest wyśrodkowany względem zdjęcia -->
-        <TextView
-            android:id="@+id/place_name"
-            android:layout_width="0dp"
+        <!-- Półprzezroczysty overlay dla lepszej czytelności tekstu -->
+        <View
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:padding="10dp"
-            android:fontFamily="@font/lato_medium"
-            android:text="Nazwa miejsca"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:background="@drawable/home_transparency"/>
+
+        <!-- Kontener na tekst i strzałkę -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+
+            android:paddingHorizontal="10dp">
+
+            <!-- Tekst -->
+            <TextView
+                android:id="@+id/place_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/lato_regular"
+                android:text="Nazwa miejsca"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <!-- Strzałka -->
+            <ImageView
+                android:id="@+id/arrow_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/right_arrow_icon"
+                android:tint="@color/white"/>
+        </LinearLayout>
+
+    </FrameLayout>
 
 </androidx.cardview.widget.CardView>

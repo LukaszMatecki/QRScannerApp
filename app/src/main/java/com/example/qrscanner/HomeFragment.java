@@ -87,7 +87,7 @@ public class HomeFragment extends Fragment
 
     private void setRecyclerViewLayout()
     {
-            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
             recyclerView.setAdapter(adapter);
     }
 

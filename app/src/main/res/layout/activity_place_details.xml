@@ -127,7 +127,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:tooltipText="Pokaż na mapie"
-                app:srcCompat="@drawable/localization_icon" />
+                app:srcCompat="@drawable/localization_small_icon" />
 
             <ImageView
                 android:id="@+id/icon4"

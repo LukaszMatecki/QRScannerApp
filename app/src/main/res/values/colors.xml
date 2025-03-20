@@ -12,7 +12,11 @@
     <color name="filter_options_gray">#7FD1D1D1</color>
     <color name="button_bar_gray">#70D3D3D3</color>
     <color name="selector_gray">#7BAFAFAF</color>
-    <color name="blue_gradient1">#1C34F8</color>
+    <color name="violet">#4508D5</color>
+    <color name="light_mocha_mousse">#9e7a6a</color>
+    <color name="lighter_mocha_mousse">#b89e92</color>
+    <color name="mocha_mousse">#a47864</color>
+
 
 
 </resources>
