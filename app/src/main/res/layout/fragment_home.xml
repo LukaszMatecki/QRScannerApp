@@ -11,7 +11,7 @@
         android:id="@+id/rectangle"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:background="@drawable/main_background_gradient"
+        android:background="@drawable/main_background_icon_gradient"
         android:visibility="visible"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
         android:id="@+id/header_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/lato_black"
         android:text="Łódź"
@@ -82,31 +82,30 @@
             android:textSize="15sp" />
     </LinearLayout>
 
+        <!-- Rekomendacje -->
+        <TextView
+            android:id="@+id/header_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/lato_bold"
+            android:text="Rekomendacje:"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rectangle" />
 
-    <!-- Rekomendacje -->
-    <TextView
-        android:id="@+id/header_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="Rekomendacje:"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rectangle" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view_home"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/header_list"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp"
-        tools:listitem="@layout/place_card_home" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_home"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header_list"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp"
+            tools:listitem="@layout/place_card_home" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

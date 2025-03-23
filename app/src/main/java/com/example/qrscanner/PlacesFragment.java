@@ -66,7 +66,6 @@ public class PlacesFragment extends Fragment {
 
         fetchCategories();
         fetchPlaces();
-
         return view;
 
 
@@ -111,6 +110,7 @@ public class PlacesFragment extends Fragment {
 
             if (!categoryList.contains("Ulubione")){categoryList.add("Ulubione");}
             if (!categoryList.contains("Zwiedzone")){categoryList.add("Zwiedzone");}
+            if (!categoryList.contains("Niezwiedzone")){categoryList.add("Niezwiedzone");}
 
             for (QueryDocumentSnapshot doc : value) {
                 String category = doc.getString("kategoria");
@@ -203,49 +203,55 @@ public class PlacesFragment extends Fragment {
                 popupLayout.addView(separator);
             }
         }
-
         // Ustawienie pozycji popupu
         popupWindow.showAsDropDown(anchorView, -500, 30);
     }
 
-
-
     private void filterPlacesByCategory(String category) {
-        if (category.equals("Wszystkie")) {
-            fetchPlaces();
-            return;
-        }
+        if (getContext() == null) return;
 
-        if (category.equals("Ulubione")) {
-            filterFavoriteOrVisited(category);
-            return;
-        }
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
 
-        if (category.equals("Zwiedzone")) {
-            filterFavoriteOrVisited(category);
-            return;
-        }
-
-        placesRef.whereEqualTo("kategoria", category).addSnapshotListener((value, error) -> {
-            if (error != null) {
-                Toast.makeText(getContext(), "Błąd filtrowania!", Toast.LENGTH_SHORT).show();
-                return;
-            }
-
-            if (value == null) return;
-
+        placesRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
             placesList.clear();
-            for (QueryDocumentSnapshot doc : value) {
-                try {
-                    Place place = doc.toObject(Place.class);
+            boolean found = false;
+
+            for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
+                Place place = doc.toObject(Place.class);
+                String placeId = doc.getId();
+
+                boolean isFavorite = sharedPreferences.getBoolean("favorite_" + placeId, false);
+                boolean isVisited = sharedPreferences.getBoolean("visited_" + placeId, false);
+                String placeCategory = doc.getString("kategoria");
+
+                if (category.equals("Wszystkie")) {
                     placesList.add(place);
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    found = true;
+                } else if (category.equals("Ulubione") && isFavorite) {
+                    placesList.add(place);
+                    found = true;
+                } else if (category.equals("Zwiedzone") && isVisited) {
+                    placesList.add(place);
+                    found = true;
+                } else if (category.equals("Niezwiedzone") && !isVisited) {
+                    placesList.add(place);
+                    found = true;
+                } else if (placeCategory != null && placeCategory.equals(category)) {
+                    placesList.add(place);
+                    found = true;
                 }
             }
+
+            if (!found) {
+                Toast.makeText(getContext(), "Brak miejsc w tej kategorii!", Toast.LENGTH_SHORT).show();
+            }
+
             adapter.notifyDataSetChanged();
+        }).addOnFailureListener(e -> {
+            Toast.makeText(getContext(), "Błąd filtrowania: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         });
     }
+
     private void switchToListView() {
         isGridView = false;
         setRecyclerViewLayout();
@@ -270,11 +276,13 @@ public class PlacesFragment extends Fragment {
         adapter.setGridView(isGridView); // Zmieniamy układ w adapterze
     }
 
-    private void filterFavoriteOrVisited(String category) {
+    private void filterFavoriteOrVisitedOrUnvisited(String category) {
         if (getContext() == null) return; // Unikamy błędów kontekstowych
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         boolean filterFavorites = category.equals("Ulubione");
+        boolean filterVisited = category.equals("Zwiedzone");
+        boolean filterUnvisited = category.equals("Niezwiedzone");
 
         placesRef.get().addOnSuccessListener(queryDocumentSnapshots -> {
             placesList.clear(); // Czyścimy listę dopiero po udanym pobraniu
@@ -287,7 +295,9 @@ public class PlacesFragment extends Fragment {
                 boolean isFavorite = sharedPreferences.getBoolean("favorite_" + placeId, false);
                 boolean isVisited = sharedPreferences.getBoolean("visited_" + placeId, false);
 
-                if ((filterFavorites && isFavorite) || (!filterFavorites && isVisited)) {
+                if ((filterFavorites && isFavorite) ||
+                        (filterVisited && isVisited) ||
+                        (filterUnvisited && !isVisited)) {
                     placesList.add(place);
                     found = true;
                 }

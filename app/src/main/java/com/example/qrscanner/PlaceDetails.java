@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -21,10 +23,11 @@ public class PlaceDetails extends AppCompatActivity {
     private FirebaseFirestore db;
     private ImageView placeImage;
     private TextView placeTitle, placeDescription;
-
     private boolean isFavorite, isVisited;
     private String placeId;
-    private ImageView iconFavorite, iconVisited, iconWaypoint, iconRoute, iconQR;
+    private ImageView iconFavorite, iconVisited, iconWaypoint, iconQR;
+
+    private ExtendedFloatingActionButton iconRoute;
     private SharedPreferences sharedPreferences;
 
     @Override

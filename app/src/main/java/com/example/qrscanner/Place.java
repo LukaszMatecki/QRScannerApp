@@ -6,6 +6,7 @@ public class Place {
     private String id;
     private String nazwa;
     private String opis;
+    private String miasto;
     private String zdjecie;
     private List<String> zdjecia_inne;
     private String kategoria;
@@ -13,10 +14,11 @@ public class Place {
 
     public Place() {}
 
-    public Place(String id, String nazwa, String opis, String zdjecie, List<String> zdjecia_inne, String kategoria, String wspolrzedne) {
+    public Place(String id, String nazwa, String opis, String miasto, String zdjecie, List<String> zdjecia_inne, String kategoria, String wspolrzedne) {
         this.id = id;
         this.nazwa = nazwa;
         this.opis = opis;
+        this.miasto = miasto;
         this.zdjecie = zdjecie;
         this.zdjecia_inne = zdjecia_inne;
         this.kategoria = kategoria;
@@ -26,6 +28,7 @@ public class Place {
     public String getId() { return id; }
     public String getNazwa() { return nazwa; }
     public String getOpis() { return opis; }
+    public String getMiasto() {return miasto; }
     public String getZdjecie() { return zdjecie; }
     public List<String> getZdjeciaInne() { return zdjecia_inne; }
     public String getKategoria() { return kategoria; }

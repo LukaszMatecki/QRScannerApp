@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Gradientowe tło -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#4508D5"
+                android:endColor="#4B50FF"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- Logo wektorowe w prawym dolnym rogu -->
+    <item
+        android:drawable="@drawable/city_icon"
+        android:gravity="bottom|end"
+        android:right="10dp"
+        android:width="120dp"
+        android:height="120dp"
+        android:bottom="-32dp"/>
+
+</layer-list>

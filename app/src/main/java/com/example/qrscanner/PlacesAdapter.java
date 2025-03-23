@@ -2,11 +2,13 @@ package com.example.qrscanner;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,6 +58,11 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
         Place place = placesList.get(position);
 
         holder.name.setText(place.getNazwa());
+        // Sprawdzenie, czy place_city istnieje w aktualnym układzie
+        if (holder.city != null)
+        {
+            holder.city.setText(place.getMiasto());
+        }
         String imageUrl = place.getZdjecie();
 
         // Resetowanie ImageView przed załadowaniem nowego obrazu
@@ -87,11 +94,13 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView image;
         TextView name;
+        TextView city;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.place_image);
             name = itemView.findViewById(R.id.place_name);
+            city = itemView.findViewById(R.id.place_city);
         }
     }
 }

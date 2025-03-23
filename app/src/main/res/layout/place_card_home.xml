@@ -31,35 +31,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-            android:paddingHorizontal="10dp">
-
-            <!-- Tekst -->
+            <!-- Nazwa miejsca -->
             <TextView
                 android:id="@+id/place_name"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
-                android:fontFamily="@font/lato_regular"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/lato_black"
                 android:text="Nazwa miejsca"
                 android:textColor="@color/white"
-                android:textSize="18sp"
+                android:textSize="22sp"
                 android:textStyle="bold" />
 
-            <!-- Strzałka -->
-            <ImageView
-                android:id="@+id/arrow_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_marginStart="8dp"
-                android:src="@drawable/right_arrow_icon"
-                android:tint="@color/white"/>
+            <!-- Nazwa miasta -->
+            <TextView
+                android:id="@+id/place_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:fontFamily="@font/lato_regular"
+                android:text="Nazwa miasta"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="normal" />
         </LinearLayout>
-
     </FrameLayout>
 
 </androidx.cardview.widget.CardView>

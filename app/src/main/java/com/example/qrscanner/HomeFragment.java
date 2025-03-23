@@ -34,7 +34,6 @@ public class HomeFragment extends Fragment
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference placesRef = db.collection("places");
     private boolean doubleBackToExitPressedOnce = false;
-
     private boolean isGridView = false;
     private boolean isHomeFragment = true;
 

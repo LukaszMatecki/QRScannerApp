@@ -67,7 +67,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
             }
 
-            // Losujemy 2 miejsca
+            // Losujemy 4 miejsca
             List<Place> selectedPlaces = getDailyRandomPlaces(allPlaces);
 
             // Zapisujemy w SharedPreferences
