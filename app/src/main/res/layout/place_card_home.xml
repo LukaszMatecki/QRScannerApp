@@ -65,5 +65,4 @@
                 android:textStyle="normal" />
         </LinearLayout>
     </FrameLayout>
-
 </androidx.cardview.widget.CardView>

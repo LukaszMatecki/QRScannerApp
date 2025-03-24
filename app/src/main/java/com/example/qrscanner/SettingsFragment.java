@@ -27,7 +27,6 @@ public class SettingsFragment extends Fragment {
     private Button clearDataButton;
     private Button aboutButton;
     private SwitchCompat notificationsSwitch;
-    private SwitchCompat linksSwitch;
     private SwitchCompat brightnessSwitch;
 
     private SharedPreferences sharedPreferences;
@@ -39,7 +38,6 @@ public class SettingsFragment extends Fragment {
 
         LinearLayout languageButton = view.findViewById(R.id.button_language);
         notificationsSwitch = view.findViewById(R.id.switch_notifications);
-        linksSwitch = view.findViewById(R.id.switch_links);
         brightnessSwitch = view.findViewById(R.id.switch_brightness);
         LinearLayout themeSwitch = view.findViewById(R.id.button_theme);
         LinearLayout clearDataButton = view.findViewById(R.id.button_clear_data);
@@ -63,14 +61,6 @@ public class SettingsFragment extends Fragment {
         notificationsSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             sharedPreferences.edit().putBoolean("notifications_enabled", isChecked).apply();
             Toast.makeText(requireContext(), isChecked ? "Powiadomienia włączone" : "Powiadomienia wyłączone", Toast.LENGTH_SHORT).show();
-        });
-
-
-        linksSwitch.setChecked(sharedPreferences.getBoolean("links_enabled", false));
-
-        linksSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            sharedPreferences.edit().putBoolean("links_enabled", isChecked).apply();
-            Toast.makeText(requireContext(), isChecked ? "Linki włączone" : "Linki wyłączone", Toast.LENGTH_SHORT).show();
         });
 
 

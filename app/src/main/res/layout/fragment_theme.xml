@@ -40,7 +40,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/theme_icon" />
+                    android:src="@drawable/theme_light_icon" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -85,7 +85,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_marginEnd="10dp"
-                    android:src="@drawable/theme_icon" />
+                    android:src="@drawable/theme_dark_icon" />
 
                 <LinearLayout
                     android:layout_width="0dp"

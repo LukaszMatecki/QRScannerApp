@@ -22,25 +22,23 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/logo_aplikacji"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 app:srcCompat="@drawable/loading" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/opis_aplikacji"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/lato_regular"
                 android:textAlignment="center"
+                android:textColor="@color/black"
                 android:text="@string/opis"
                 android:textSize="18sp" />
 
         </LinearLayout>
-
     </androidx.cardview.widget.CardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
