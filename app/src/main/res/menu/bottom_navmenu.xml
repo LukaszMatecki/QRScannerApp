@@ -11,14 +11,14 @@
     <item
         android:id="@+id/scan"
         android:title="Skaner"
-        android:icon="@drawable/qrbig_icon"
+        android:icon="@drawable/scanner_icon"
         app:showAsAction="always"
         />
 
     <item
         android:id="@+id/map"
         android:title="Mapa"
-        android:icon="@drawable/map_icon"
+        android:icon="@drawable/maps_icon"
         app:showAsAction="always"
         />
 

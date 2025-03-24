@@ -11,11 +11,11 @@
             android:title="Strona główna"/>
         <item
             android:id="@+id/boczny_skaner"
-            android:icon="@drawable/qrbig_icon"
+            android:icon="@drawable/scanner_icon"
             android:title="Skaner"/>
         <item
             android:id="@+id/boczny_mapa"
-            android:icon="@drawable/map_icon"
+            android:icon="@drawable/maps_icon"
             android:title="Mapa"/>
         <item
             android:id="@+id/boczny_miejsca"

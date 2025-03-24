@@ -32,15 +32,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Łódź -->
-
-    <!-- Znacznik lokalizacji -->
-
     <TextView
         android:id="@+id/header_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/lato_black"
         android:text="Łódź"
@@ -102,6 +97,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
             android:layout_marginStart="15dp"
+            android:layout_marginBottom="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/header_list"
             app:layout_constraintVertical_bias="0.0"
