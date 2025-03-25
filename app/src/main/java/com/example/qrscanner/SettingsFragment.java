@@ -18,6 +18,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.bumptech.glide.Glide;
+
 import java.util.Objects;
 
 public class SettingsFragment extends Fragment {
@@ -121,6 +123,10 @@ public class SettingsFragment extends Fragment {
     {
         SharedPreferences preferences = requireContext().getSharedPreferences("AppPrefs", 0);
         preferences.edit().clear().apply();
+
+        Glide.get(requireContext()).clearMemory();
+        new Thread(() -> Glide.get(requireContext()).clearDiskCache()).start();
+
         Toast.makeText(requireContext(), "Dane zostały usunięte", Toast.LENGTH_SHORT).show();
 
         // Restart aktywności

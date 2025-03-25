@@ -14,9 +14,8 @@
 
     <!-- Logo wektorowe w prawym dolnym rogu -->
     <item
-        android:drawable="@drawable/city_icon"
+        android:drawable="@drawable/city1_icon"
         android:gravity="bottom|end"
-        android:right="10dp"
         android:width="120dp"
         android:height="120dp"
         android:bottom="-32dp"/>

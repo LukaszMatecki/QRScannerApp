@@ -69,6 +69,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.ViewHolder
         holder.image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         holder.image.setImageDrawable(null);
 
+
         Glide.with(context)
                 .load(imageUrl)
                 .diskCacheStrategy(DiskCacheStrategy.RESOURCE)

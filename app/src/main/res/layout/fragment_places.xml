@@ -12,7 +12,7 @@
         android:id="@+id/rectangle"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/main_background_gradient"
+        android:background="@drawable/background_city2"
         app:layout_constraintTop_toTopOf="parent" />
 
     <!-- Nagłówek -->
