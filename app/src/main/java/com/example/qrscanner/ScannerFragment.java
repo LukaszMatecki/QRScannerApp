@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.ScanOptions;
@@ -36,7 +38,7 @@ public class ScannerFragment extends Fragment {
 
         // Wymuszamy orientację pionową
         ScanOptions options = new ScanOptions();
-        options.setOrientationLocked(false);
+        options.setOrientationLocked(true);
 
         // Konfiguracja skanera
         intentIntegrator.setPrompt("Zeskanuj kod QR");
@@ -48,16 +50,38 @@ public class ScannerFragment extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        // Obsługa wyniku skanowania
         IntentResult intentResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (intentResult != null) {
-            if (intentResult.getContents() != null) {
-                // Wynik skanowania (np. wyświetlenie w logach)
-                System.out.println("QR Code Result: " + intentResult.getContents());
+            String scannedData = intentResult.getContents();
+            if (scannedData != null) {
+                try {
+                    int placeId = Integer.parseInt(scannedData); // Pobranie ID miejsca z QR
+                    String formattedPlaceId = String.format("%03d", placeId); // Formatowanie zgodnie z PlaceDetails
+
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    db.collection("places").document(formattedPlaceId).get()
+                            .addOnSuccessListener(documentSnapshot -> {
+                                if (documentSnapshot.exists()) {
+                                    // Miejsce istnieje, otwieramy szczegóły
+                                    Intent intent = new Intent(requireContext(), PlaceDetails.class);
+                                    intent.putExtra("PLACE_ID", formattedPlaceId);
+                                    startActivity(intent);
+                                } else {
+                                    // Miejsce nie istnieje, wyświetlamy Toast
+                                    Toast.makeText(requireContext(), "Nie znaleziono żadnego pasującego miejsca", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnFailureListener(e ->
+                                    Toast.makeText(requireContext(), "Błąd połączenia z bazą danych", Toast.LENGTH_SHORT).show()
+                            );
+
+                } catch (NumberFormatException e) {
+                    Toast.makeText(requireContext(), "Niepoprawny kod QR", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(requireContext(), "Brak danych w kodzie QR", Toast.LENGTH_SHORT).show();
             }
         }
-
-        returnToHomeFragment();
     }
 
     private void returnToHomeFragment() {

@@ -54,7 +54,7 @@ public class QRDialogFragment extends DialogFragment {
             Glide.with(this)
                     .load(qrUrl)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .placeholder(R.drawable.loading)
+                    .placeholder(R.drawable.loading2)
                     .error(R.drawable.loading_error)
                     .into(qrImageView);
         } else {
