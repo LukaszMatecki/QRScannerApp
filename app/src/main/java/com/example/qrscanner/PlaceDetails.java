@@ -144,7 +144,8 @@ public class PlaceDetails extends AppCompatActivity {
                 .addOnSuccessListener(documentSnapshot -> {
                     if (documentSnapshot.exists()) {
                         String qrUrl = documentSnapshot.getString("kod");
-                        if (qrUrl != null && !qrUrl.isEmpty()) {
+                        if (qrUrl != null && !qrUrl.isEmpty())
+                        {
                             QRDialogFragment qrDialog = new QRDialogFragment(qrUrl);
                             qrDialog.show(getSupportFragmentManager(), "QRDialog");
                         } else {

@@ -2,13 +2,12 @@ package com.example.qrscanner;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.provider.Settings;
-import android.view.View;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -23,6 +22,7 @@ public class QRDialogFragment extends DialogFragment {
 
     private String qrUrl;
     private float originalBrightness;
+    private SharedPreferences sharedPreferences;
 
     public QRDialogFragment(String qrUrl) {
         this.qrUrl = qrUrl;
@@ -31,6 +31,7 @@ public class QRDialogFragment extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        sharedPreferences = requireContext().getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
         Dialog dialog = new Dialog(requireContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.activity_qr_display);
@@ -77,16 +78,37 @@ public class QRDialogFragment extends DialogFragment {
 
     private void adjustScreenBrightness(boolean increase) {
         Context context = getContext();
-        if (context == null) return;
+        if (context == null || getActivity() == null) return;
 
         Window window = getActivity().getWindow();
+        if (window == null) return;
+
         WindowManager.LayoutParams layoutParams = window.getAttributes();
 
-        if (increase) {
-            originalBrightness = layoutParams.screenBrightness;
+
+        boolean isBrightnessEnabled = sharedPreferences.getBoolean("brightness_enabled", true);
+
+        if (increase && isBrightnessEnabled) {
+
+            if (layoutParams.screenBrightness == WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE) {
+                originalBrightness = -1; // Wartość domyślna
+            }
+            else {
+                originalBrightness = layoutParams.screenBrightness;
+            }
+
             layoutParams.screenBrightness = 1.0f; // Maksymalna jasność
-        } else {
-            layoutParams.screenBrightness = originalBrightness; // Przywrócenie oryginalnej jasności
+            Log.d("QRDialogFragment", "Zwiększono jasność ekranu.");
+        }
+        else if (!increase && isBrightnessEnabled) {
+            Log.d("QRDialogFragment", "Przywrócono oryginalną jasność ekranu.");
+
+            if (originalBrightness == -1) {
+                layoutParams.screenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE; // Domyślna jasność systemowa
+            }
+            else {
+                layoutParams.screenBrightness = originalBrightness;
+            }
         }
 
         window.setAttributes(layoutParams);

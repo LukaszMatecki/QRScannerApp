@@ -70,7 +70,7 @@ public class SettingsFragment extends Fragment {
 
         brightnessSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             sharedPreferences.edit().putBoolean("brightness_enabled", isChecked).apply();
-            Toast.makeText(requireContext(), isChecked ? "Jasność automatyczna włączona" : "Jasność automatyczna wyłączona", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), isChecked ? "Automatyczne rozjaśnianie ekranu włączona" : "Automatyczne rozjaśnianie ekranu wyłączone", Toast.LENGTH_SHORT).show();
         });
 
 
