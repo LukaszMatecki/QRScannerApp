@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">QRScanner</string>
+    <string name="app_name">QRŁódź</string>
     <string name="google_maps_key">AIzaSyCpWOb97xfwjk_oUl3xE6U40M-3ZD5T4gk</string>
     <string name="title_activity_maps">MapsActivity</string>
     <string name="open_nav">Otwórz boczny pasek nawigacyjny</string>
     <string name="close_nav">Zamknij boczny pasek nawigacyjny</string>
-    <string name="opis">Projekt autorskiej aplikacji mobilnej ze skanerem kodów QR umożliwiającej łatwy dostęp do interaktywnych informacji o atrakcjach turystycznych w Łodzi stanowiącej nowoczesne narzędzie promocji miasta, które poprawia dostępność wiedzy o jego walorach kulturalnych i historycznych dla odwiedzających</string>
+    <string name="opis">QRŁódź to aplikacja mobilna ze skanerem kodów dwuwymiarowych umożliwiająca prosty i szybki dostęp do interaktywnych informacji o atrakcjach turystycznych w Łodzi.</string>
 </resources>

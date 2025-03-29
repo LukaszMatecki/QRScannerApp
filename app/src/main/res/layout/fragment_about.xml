@@ -22,11 +22,30 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <ImageView
-                android:id="@+id/logo_aplikacji"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                app:srcCompat="@drawable/loading" />
+            <!-- Layout poziomy: Logo + Nazwa aplikacji -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/logo_aplikacji"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:src="@drawable/app_big_icon"/>
+
+                <TextView
+                    android:id="@+id/nazwa_aplikacji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/lato_black"
+                    android:text="QRŁódź"
+                    android:textSize="40sp"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/opis_aplikacji"
@@ -34,7 +53,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/lato_regular"
-                android:textAlignment="center"
                 android:textColor="@color/black"
                 android:text="@string/opis"
                 android:textSize="18sp" />
