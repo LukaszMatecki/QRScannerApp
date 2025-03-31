@@ -78,4 +78,6 @@ dependencies {
 
     implementation ("com.google.maps.android:android-maps-utils:2.2.3")
 
+    implementation ("com.airbnb.android:lottie:6.1.0")
+
 }

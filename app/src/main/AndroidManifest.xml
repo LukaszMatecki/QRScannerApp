@@ -18,7 +18,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.QRScanner"
+        android:theme="@style/Theme.QRScanner.SplashScreen"
 
         >
 
@@ -39,10 +39,12 @@
 
         <activity
             android:name=".HomeFragment"
+            android:theme="@style/Theme.QRScanner"
             android:windowSoftInputMode="adjustPan">
         </activity>
         <activity
             android:name=".MapsActivity"
+            android:theme="@style/Theme.QRScanner"
             android:exported="false"
             android:label="@string/title_activity_maps" />
         <activity
@@ -58,6 +60,7 @@
 
 
         <activity android:name=".ScannerFragment"
+                  android:theme="@style/Theme.QRScanner"
                   android:screenOrientation="fullSensor"
                   tools:replace="screenOrientation"/>
 
@@ -67,9 +70,12 @@
             tools:replace="android:screenOrientation"
             tools:ignore="DiscouragedApi" />
 
-        <activity android:name=".MapFragment" />
+        <activity android:name=".MapFragment"
+            android:theme="@style/Theme.QRScanner"
+            />
 
-        <activity android:name=".PlaceDetails"/>
+        <activity android:name=".PlaceDetails"
+            android:theme="@style/Theme.QRScanner"/>
     </application>
 
 </manifest>

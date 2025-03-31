@@ -79,7 +79,7 @@ public class ScannerFragment extends Fragment {
                     Toast.makeText(requireContext(), "Niepoprawny kod QR", Toast.LENGTH_SHORT).show();
                 }
             } else {
-                Toast.makeText(requireContext(), "Brak danych w kodzie QR", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Brak danych o kodzie QR", Toast.LENGTH_SHORT).show();
             }
         }
     }

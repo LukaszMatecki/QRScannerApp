@@ -3,7 +3,6 @@
     <style name="Base.Theme.QRScanner" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-
         <item name="colorPrimary">#4508D5</item>
         <item name="colorPrimaryVariant">#FFFFFF</item>
         <item name="colorOnPrimary">#000000</item>
@@ -32,6 +31,15 @@
     <style name="BottomNavigationViewTextStyleInactive">
         <item name="android:fontFamily">@font/lato_regular</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Theme.QRScanner.SplashScreen" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">#4508D5</item>
+        <item name="colorPrimaryVariant">#FFFFFF</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorAccent">#FFFFFF</item>
+        <item name="colorButtonNormal">#43a5be</item>
+        <item name="android:windowBackground">@drawable/main_background_gradient</item>
     </style>
 
     <style name="Theme.QRScanner" parent="Base.Theme.QRScanner" />

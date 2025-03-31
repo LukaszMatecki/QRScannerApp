@@ -1,13 +1,14 @@
 package com.example.qrscanner;
 
+import android.animation.Animator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -25,30 +26,39 @@ import java.util.TimeZone;
 
 public class SplashScreen extends AppCompatActivity {
 
-    private static final int SPLASH_TIMER = 2000;  // 2 sekundy
     private FirebaseFirestore db;
     private SharedPreferences prefs;
-    private ProgressBar progressBar;
-    private int progressStatus = 0; // Dodane zmienne
-    private Handler handler = new Handler(); // Dodane zmienne
+    private LottieAnimationView lottieAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_QRScanner);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
 
-        progressBar = findViewById(R.id.progressBar);
         db = FirebaseFirestore.getInstance();
         prefs = getSharedPreferences("AppPrefsHome", MODE_PRIVATE);
+        lottieAnimation = findViewById(R.id.lottie_animation);
 
-        startProgressAnimation();
         fetchRandomPlaces();  // Pobieramy dane już na splashscreenie
 
-        new Handler().postDelayed(() ->
-        {
-            startActivity(new Intent(SplashScreen.this, MainActivity.class));
-            finish();
-        }, SPLASH_TIMER);
+        // Czekamy na zakończenie animacji Lottie
+        lottieAnimation.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {}
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                startActivity(new Intent(SplashScreen.this, MainActivity.class));
+                finish();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {}
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {}
+        });
     }
 
     private void fetchRandomPlaces() {
@@ -106,19 +116,5 @@ public class SplashScreen extends AppCompatActivity {
         }
 
         return allPlaces.subList(0, 4);
-    }
-
-    private void startProgressAnimation() {
-        new Thread(() -> {
-            while (progressStatus < 100) {
-                progressStatus += 2;  // Zwiększamy co 40 ms (100% w ~2 sekundy)
-                handler.post(() -> progressBar.setProgress(progressStatus));
-                try {
-                    Thread.sleep(40);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
     }
 }
